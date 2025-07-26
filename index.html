@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>5 Hộp Quà Tặng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #fce4ec, #e1bee7);
+      text-align: center;
+      padding: 50px 10px;
+    }
+
+    h1 {
+      color: #ad1457;
+      margin-bottom: 40px;
+    }
+
+    .gift-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .gift-box {
+      width: 120px;
+      height: 120px;
+      background-color: #f06292;
+      border: 4px solid #880e4f;
+      border-radius: 20px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.1);
+    }
+
+    .gift-box::before {
+      content: "🎁";
+      font-size: 50px;
+      position: absolute;
+      top: 25%;
+      left: 25%;
+    }
+
+    .gift-content {
+      display: none;
+      margin-top: 10px;
+      color: #6a1b9a;
+    }
+
+    img {
+      max-width: 200px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Mở từng hộp để nhận quà 🎉</h1>
+
+  <div class="gift-container">
+    <div class="gift">
+      <div class="gift-box" onclick="toggleGift(0)"></div>
+      <div class="gift-content" id="gift0">
+        <p>Chiếc nhẫn này tuy nhỏ, nhưng là lời hứa to lớn – mãi mãi nắm tay em đi hết cuộc đời.</p>
+        <img src="chiếc nhẫn tặng bé.jpg" alt="Chiếc nhẫn" />
+      </div>
+    </div>
+
+    <div class="gift">
+      <div class="gift-box" onclick="toggleGift(1)"></div>
+      <div class="gift-content" id="gift1">
+        <p>Món quà em tặng tuy nhỏ nhưng đối với anh đó là tình yêu to lớn mà em dành cho anh.</p>
+        <img src="hộp quà vòng tay.jpg" alt="Vòng tay" />
+      </div>
+    </div>
+
+    <div class="gift">
+      <div class="gift-box" onclick="toggleGift(2)"></div>
+      <div class="gift-content" id="gift2">
+        <p>Có lẽ đây là 1 kỷ niệm trong timeline đáng nhớ!</p>
+        <img src="sinh nhật.jpg" alt="Sinh nhật" />
+      </div>
+    </div>
+
+    <div class="gift">
+      <div class="gift-box" onclick="toggleGift(3)"></div>
+      <div class="gift-content" id="gift3">
+        <p>Trái tim nhỏ nhưng tình yêu đủ lớn ❤️</p>
+        <img src="trái tim đôi tay.jpg" alt="Trái tim" />
+      </div>
+    </div>
+
+    <div class="gift">
+      <div class="gift-box" onclick="toggleGift(4)"></div>
+      <div class="gift-content" id="gift4">
+        <p>Người mà anh luôn tin tưởng, yêu đến mãi về sau – ở bên phải anh nè!!!</p>
+        <img src="ảnh chụp anh và em.jpg" alt="Ảnh đôi" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleGift(index) {
+      const content = document.getElementById(`gift${index}`);
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
