@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kỷ niệm 1 năm yêu nhau</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('bo-hoa-hong.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      animation: pulse 2s infinite;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .heart-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 24px;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -10%; opacity: 1; }
+      100% { top: 110%; opacity: 0; }
+    }
+
+    .gift-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 60px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .gift {
+      width: 150px;
+      height: 150px;
+      background-color: rgba(255, 192, 203, 0.3);
+      border: 2px dashed white;
+      border-radius: 15px;
+      margin: 20px;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      transition: 0.3s;
+      backdrop-filter: blur(3px);
+    }
+
+    .gift:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .gift-content {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .gift-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .gift-content p {
+      margin-top: 10px;
+      font-size: 1rem;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    iframe {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="countdown" id="countdown">Đếm ngược đến 1 năm yêu nhau...</div>
+
+  <div class="heart-rain" id="hearts"></div>
+
+  <div class="gift-container">
+    <div class="gift" onclick="showGift(0)">
+      Hộp quà 1
+      <div class="gift-content">
+        <img src="chiếc nhẫn tặng bé.jpg" alt="Nhẫn" />
+        <p>Chiếc nhẫn này tuy nhỏ, nhưng là lời hứa to lớn – mãi mãi nắm tay em đi hết cuộc đời.</p>
+      </div>
+    </div>
+
+    <div class="gift" onclick="showGift(1)">
+      Hộp quà 2
+      <div class="gift-content">
+        <img src="hộp quà vòng tay.jpg" alt="Vòng tay" />
+        <p>Món quà em tặng tuy nhỏ nhưng đối với anh đó là tinh yêu to lớn mà em dành cho anh – anh sẽ mãi trân quý.</p>
+      </div>
+    </div>
+
+    <div class="gift" onclick="showGift(2)">
+      Hộp quà 3
+      <div class="gift-content">
+        <img src="sinh nhật.jpg" alt="Sinh nhật" />
+        <p>Có lẽ đây là một kỷ niệm trong time line đáng nhớ!</p>
+      </div>
+    </div>
+
+    <div class="gift" onclick="showGift(3)">
+      Hộp quà 4
+      <div class="gift-content">
+        <img src="trái tim đôi tay.jpg" alt="Trái tim" />
+        <p>Trái tim nhỏ nhưng tình yêu đủ lớn &lt;3</p>
+      </div>
+    </div>
+
+    <div class="gift" onclick="showGift(4)">
+      Hộp quà 5
+      <div class="gift-content">
+        <img src="ảnh chụp anh và em.jpg" alt="Ảnh đôi" />
+        <p>Người mà anh luôn tin tưởng, yêu đến mãi về sau ở bên phải anh nè!!!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube nhạc nền -->
+  <iframe width="300" height="170" src="https://www.youtube.com/embed/UqjDEQANriY?autoplay=1&mute=0&loop=1&playlist=UqjDEQANriY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    // Countdown
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("2025-12-20T00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.innerHTML = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây nữa là tròn 1 năm yêu nhau ❤️`;
+    }, 1000);
+
+    // Gift logic
+    function showGift(index) {
+      const gifts = document.querySelectorAll('.gift-content');
+      gifts[index].style.display = gifts[index].style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Heart rain
+    const heartContainer = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.innerText = 'bé AN';
+      heart.style.fontSize = Math.random() * 10 + 15 + 'px';
+      heartContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
